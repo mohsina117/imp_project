@@ -76,4 +76,4 @@ if (mysqli_num_rows($result) > 0) {
 
 </html>
 
-//added search function in view_products page
+
