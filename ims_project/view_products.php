@@ -1,7 +1,15 @@
 <?php
 include 'db_connect.php';
 
-$sql = "SELECT * FROM products";
+// Search functionality
+$search = "";
+if (isset($_GET['search'])) {
+    $search = $_GET['search'];
+    $sql = "SELECT * FROM products WHERE product_name LIKE '%$search%'";
+} else {
+    $sql = "SELECT * FROM products";
+}
+
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -19,6 +27,14 @@ $result = mysqli_query($conn, $sql);
 <h2>Product List</h2>
 
 <a href="add_product.php" class="top-btn">+ Add Product</a>
+
+<!-- Search Box -->
+<form method="GET" style="margin-bottom:15px;">
+    <input type="text" name="search" placeholder="Search product (e.g. mugs)" 
+           value="<?php echo $search; ?>" 
+           style="width:70%; padding:10px;">
+    <input type="submit" value="Search">
+</form>
 
 <table>
 <thead>
@@ -56,4 +72,8 @@ if (mysqli_num_rows($result) > 0) {
 </div>
 
 </body>
+
+
 </html>
+
+//added search function in view_products page
