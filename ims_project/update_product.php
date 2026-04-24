@@ -19,7 +19,9 @@ if (isset($_POST['update'])) {
             WHERE product_id=$id";
 
     if (mysqli_query($conn, $sql)) {
-        header("Location: view_products.php");
+        // ✅ redirect with flag
+        header("Location: view_products.php?updated=1");
+        exit();
     }
 }
 ?>
