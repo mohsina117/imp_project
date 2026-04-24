@@ -21,6 +21,13 @@ $result = mysqli_query($conn, $sql);
 </head>
 <body>
 
+<!-- ✅ POPUP ALERT -->
+<?php
+if (isset($_GET['updated'])) {
+    echo "<script>alert('Product updated successfully!');</script>";
+}
+?>
+
 <div class="container">
 <div class="card">
 
@@ -72,8 +79,4 @@ if (mysqli_num_rows($result) > 0) {
 </div>
 
 </body>
-
-
 </html>
-
-
